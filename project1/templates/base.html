@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <p>
+            <a href = http://127.0.0.1:5000/logout>Logout</a href>
+        </p>
+    </header>
+
+    <body>
+        <h1>{% block title %}{% endblock %}</h1>
+
+        <div>
+            <font color="red">
+                {% block errormessage %}
+                {% endblock errormessage %}
+            </font>
+        </div>
+        
+        {% block body %}
+        
+        {% endblock %}
+    </body>
+    
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <footer> 
+        <p> Created for cs50 Project 1 </p>
+    </footer>
+</html>

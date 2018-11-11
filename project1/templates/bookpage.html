@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    <h1> {{ book[1] }} </h1>
+        <p>by {{book[2]}}</p>
+        <p> Published in {{book[3]}} </p>
+        <p> ISBN {{book[0]}} </p>
+        <p> Total reviews on this Site: {{ context.reviews_count_here }}
+        <p> Average rview core on this Site: {{ context.reviews_average_here }}</p>
+        <p> Total reviews on GoodReads: {{ context.reviews_count }} </p>
+        <p> Average review score on GoodReads: {{ context.reviews_average }} </p>
+{% endblock title %}
+
+{% block body %}
+    <ul>
+    <h2>Reviews:</h2>
+        {% for username, review, score in reviews %}
+        <li>
+        Review by: {{ username }}
+        <p> Score: {{ score }} </p>
+        <p> Review text: {{ review }} </p></li>
+        {% endfor %}
+    </ul>
+
+
+        <p> <h3> Submit a review </h3> </p>
+         <form action="{{ url_for('book', bookid = book[0] )}}" method = "POST">
+            
+            <div>
+                1<input type="radio" name="score" value="1">
+                <input type="radio" name="score" value="2">
+                <input type="radio" name="score" value="3">
+                <input type="radio" name="score" value="4"> 
+                <input type="radio" name="score" value="5">5 
+            </div>
+
+            <div>
+                <textarea rows = "20" style="width:1000px" name = "review" placeholder = "Paste your review here" >
+{{ reviewtext }}
+                </textarea>
+            </div>
+            <button>Submit</button>
+
+
+        <p> <a href = http://127.0.0.1:5000/home> Back to search </a href> </p>
+{% endblock body %}
+
+{% block errormessage %}
+    {{ errormessage }}
+{% endblock errormessage %}

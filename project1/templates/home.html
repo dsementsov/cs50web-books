@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <form action="{{ url_for('home')}}" method = "POST">
+            <input type = "text" name = "search" placeholder = "I am looking for...">
+            <select name="crt">
+                {% for entry in criterias %}
+                    <option value= {{ entry }}>{{ entry }}</option>
+                {% endfor %}
+            </select>
+            <button>Search</button>
+
+            <div>
+                <ul>
+                    {% for entry in search_results %}
+                    <li> <a href = http://127.0.0.1:5000/book/{{ entry[0] }}>{{ entry[1] }}</a href>, by {{ entry[2] }}, Published in {{ entry [3] }} </li>
+                    {% endfor %}
+                </ul>                
+            </div>
+{% endblock body %}
+
+{% block errormessage %}
+    {{ errormessage }}
+{% endblock errormessage %}
